@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://unpkg.com/htmx.org@1.9.8"></script>
+		<link rel="stylesheet" href="static/index.css" />
+		<title>Guest Book</title>
+	</head>
+	<body>
+		<!--BEGIN HEADER-->
+		<header class="header">
+			<div class="container">
+				<h1>
+					<span>G</span>
+					<span>U</span>
+					<span>E</span>
+					<span>S</span>
+					<span>T</span>
+					<span>_</span>
+					<span>B</span>
+					<span>O</span>
+					<span>O</span>
+					<span>K</span>
+					📚
+				</h1>
+				<h2>place where you can leave your thoughts</h2>
+			</div>
+		</header>
+		<!--EOF HEADER-->
+
+		<!--BEGIN FORM-->
+		<div class="form-wrapper">
+			<h2>Add your addition</h2>
+			<form class="form" hx-post="/api/guest" hx-target="#guests" hx-swap="beforeend">
+				<div class="input-wrapper">
+					<label>Name</label>
+					<input id="name" name="name" type="text" required />
+				</div>
+
+				<div class="input-wrapper">
+					<label>Email</label>
+					<input id="email" name="email" type="email" required />
+				</div>
+
+				<div class="input-wrapper">
+					<label>Message</label>
+					<textarea id="comment" name="comment" type="text" required></textarea>
+				</div>
+
+				<button>save</button>
+			</form>
+		</div>
+		<!--EOF FORM-->
+
+		<!--BEGIN GUESTS-->
+		<div class="guests-parent">
+			<ul class="guests" id="guests" hx-trigger="load" hx-get="/api/guest"></ul>
+		</div>
+		<!--EOF GUESTS-->
+	</body>
+</html>

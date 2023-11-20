@@ -1,0 +1,4 @@
+DB_PWD=password123
+DB_PORT=12345
+DB_HOST=localhost
+DB_USR=root
